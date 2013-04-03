@@ -1,4 +1,17 @@
-.section, .sidebar {
-	border: 1px solid #666;
+.sidebar {
 	height: 500px;
+}
+
+.section {
+	border-right: 1px solid #E3E3E3;
+	
+	h1 {
+		font-size: 4em;
+		color: #5AB6C2;
+		text-align: center;
+	}
+	
+	.project_name {
+		cursor: pointer;
+	}
 }

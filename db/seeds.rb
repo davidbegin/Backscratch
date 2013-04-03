@@ -1,7 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Project.create(name: 'Mobile App', client: 'Rich Uncle Pennybags', description: 'An app to track all the various real estate endeavours of our favorite monocled-man', finish_date: Time.now)  
+Project.create(name: 'Wine Reccomender', client: 'Yellow Tail', description: 'An App that will keep track or what is in your wine cellar and the choose the best pairing for the meal you will be eating that night. While Also at the same time always siggesting to go buy Yellow Tail', finish_date: Time.now)
+Project.create(name: 'Natty Calculator', client: 'Natty Light', description: 'A simple App the converts the number of alcoholic beverages you have consumed into nattys and then tells you how much money you could have saved', finish_date: Time.now)

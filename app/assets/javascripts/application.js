@@ -16,6 +16,8 @@
 //= require underscore
 //= require backbone
 //= require pomodoro
+//= require handlebars
+//= require handlebars.runtime
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
@@ -24,4 +26,3 @@
 //= require_tree .
 
 $(document).foundation();
-console.log('Application.js Loaded')

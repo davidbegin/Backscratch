@@ -21,10 +21,17 @@
   </head>
 
   <body class="row">
-
-		<h1>Pomodoro</h1>
+		<header class="main_header">
+			<h1>Pomodoro</h1>
+		</header>
 		
-    <%= yield %>
+		<div class="large-12 columns">
+    	<%= yield %>
+		</div>
+
+		<footer class="large-12 columns main_footer">
+			copyright jurassicMedia
+		</footer>
     
     <%= javascript_include_tag "application" %>
   </body>

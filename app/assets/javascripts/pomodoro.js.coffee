@@ -4,7 +4,8 @@ window.Pomodoro =
 	iews: {}
 	Routers: {}
 	initialize: ->
-		console.log('Backbone Started')
+		new MainRouter()
+		Backbone.history.start()
 
 $(document).ready ->
 	Pomodoro.initialize()
