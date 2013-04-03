@@ -1,7 +1,6 @@
 ProjectsView = Backbone.View.extend({
-	tagName: 'div',
-	className: 'projects_wrapper',
 	templateName: 'projects_header',
+	className: '',
 	
 	initialize: function() {
 		this.collection.on('sync', this.render, this)
@@ -20,9 +19,9 @@ ProjectsView = Backbone.View.extend({
 	},
 	
 	newProject: function(){
-		$('.project').empty();
 		this.template = JST['project_form'];
 		this.$el.html(this.template);
+		$('.project').css('display', 'none');
 	},
 	
 	createProject: function(event){

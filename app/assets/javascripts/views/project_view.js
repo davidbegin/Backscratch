@@ -1,14 +1,19 @@
 ProjectView = Backbone.View.extend({
-	className: 'project_wrapper',
 	templateName: 'project',
 	
-	initialize: function(){
+	events: {
+		'click .project_name': 'showTodos'
+	},
+	
+	showTodos: function(){
+		todo_selector = ".project_" + this.model.get('id');
+		$('.todos div').hide();
+		$(todo_selector).show();
 	},
 	
 	render: function(){
 		this.template = JST[this.templateName];
 		project = this.model.toJSON();
-		console.log(project)
 		var html = this.template(project);
 		this.$el.html(html);
 		return this;
