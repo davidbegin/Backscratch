@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem 'handlebars_assets'
 gem 'thin'
+gem "font-awesome-rails"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

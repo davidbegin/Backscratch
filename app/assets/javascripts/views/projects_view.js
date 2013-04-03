@@ -8,12 +8,31 @@ ProjectsView = Backbone.View.extend({
 	},
 	
 	events: {
-		'click .project_name': 'showProjectStats'
+		'click .project_name': 'showProjectStats',
+		'click .icon-file': 'newProject',
+		'click .icon-undo': 'render',
+		'click #new_project_button': 'createProject'
 	},
 	
 	showProjectStats: function(){
 		console.log('I was clicked!');
-		
+		console.log(this);
+	},
+	
+	newProject: function(){
+		console.log('So you want a new Project!');
+		this.template = JST['project_form'];
+		this.$el.html(this.template);
+	},
+	
+	createProject: function(event){
+		event.preventDefault();
+		console.log('Want a new Form!');
+		this.collection.create({
+			name: $('#name_input').val(),
+			client: $('#client_input').val(),
+			description: $('#description_input').val()
+		});
 	},
 	
 	render: function(){
