@@ -1,10 +1,10 @@
 ProjectsView = Backbone.View.extend({
 	tagName: 'div',
 	className: 'projects_wrapper',
-	templateName: 'projects_index',
+	templateName: 'projects_header',
 	
 	initialize: function() {
-		this.collection.on('all', this.render, this)
+		this.collection.on('sync', this.render, this)
 	},
 	
 	events: {
@@ -20,14 +20,13 @@ ProjectsView = Backbone.View.extend({
 	},
 	
 	newProject: function(){
-		console.log('So you want a new Project!');
+		$('.project').empty();
 		this.template = JST['project_form'];
 		this.$el.html(this.template);
 	},
 	
 	createProject: function(event){
 		event.preventDefault();
-		console.log('Want a new Form!');
 		this.collection.create({
 			name: $('#name_input').val(),
 			client: $('#client_input').val(),
@@ -37,8 +36,40 @@ ProjectsView = Backbone.View.extend({
 	
 	render: function(){
 		this.template = JST[this.templateName];
-		var html = this.template({ projects: this.collection.toJSON() })
-		this.$el.html(html);
-		return this;
+		this.$el.html(this.template());
+    this.collection.each(this.appendProject)
+    return this;
+	},
+	
+	appendProject: function(project) {
+		view = new ProjectView({ model: project });
+		$('.section').append(view.render().el);
 	}
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
