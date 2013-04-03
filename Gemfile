@@ -5,6 +5,7 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem 'handlebars_assets'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -15,4 +16,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+end
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
 end
