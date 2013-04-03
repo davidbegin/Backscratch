@@ -24,3 +24,4 @@
 //= require_tree .
 
 $(document).foundation();
+console.log('Application.js Loaded')

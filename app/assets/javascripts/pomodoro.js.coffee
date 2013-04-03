@@ -1,9 +1,10 @@
 window.Pomodoro =
-  Models: {}
-  Collections: {}
-  Views: {}
-  Routers: {}
-  initialize: -> alert 'Hello from Backbone!'
+	Models: {}
+	Collections: {}
+	iews: {}
+	Routers: {}
+	initialize: ->
+		console.log('Backbone Started')
 
 $(document).ready ->
-  Pomodoro.initialize()
+	Pomodoro.initialize()
