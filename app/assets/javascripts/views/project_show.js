@@ -5,6 +5,16 @@ ProjectView = Backbone.View.extend({
 		this.todos = new TodosCollection();
 		this.todos.fetch();
 		this.todos.on('reset', this.render, this);
+		
+		
+		// THIS ISNT BEING NOTIFED OF THE NEW TODOS AND FIRING THE TESTING EVENT
+		this.todos.on('all', this.testin, this);
+	},
+	
+	
+	// THIS ISNT FIRING WHEN CHANGES HAPPEN ON THE TODO
+	testin: function(){
+		console.log('So the todos have been testin')
 	},
 	
 	events: {

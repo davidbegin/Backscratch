@@ -3,7 +3,7 @@ ProjectsView = Backbone.View.extend({
 	className: '',
 	
 	initialize: function() {
-		this.collection.on('sync', this.render, this)
+		this.collection.on('sync', this.render, this);
 	},
 	
 	events: {

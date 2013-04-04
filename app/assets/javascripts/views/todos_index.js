@@ -18,14 +18,14 @@ TodoIndex = Backbone.View.extend({
 		  }
 		});
 		this.$el.html(this.template({ project_name: project.name, project_id: project.id }));
-		
 		$('.todo_wrapper').empty();
 		_.each(this.collection, function(todo){
 			view = new TodoShow({ model: todo });
 			$('.todo_wrapper').append(view.render().el)
 		});
-
-		
+		form = new TodoForm({ collection: this.collection, project_id: project_id });
+		console.log(form.render().el)
+		$('#todo_form').html(form.render().el)		
 		return this;
 	}
 });
