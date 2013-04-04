@@ -5,12 +5,10 @@ TodoIndex = Backbone.View.extend({
 		this.all_projects = new ProjectCollection();
 		this.all_projects.fetch();
 		this.all_projects.on('reset', this.render, this);
-		console.log(this.collection);
 	},
 	
-	render: function(){
-		project_id = this.collection[0].project_id;
-		console.log(project_id);
+	render: function(){		
+	project_id = this.collection[0].project_id;
 		this.template = JST[this.templateName];
 		projects_url = '/projects/' + project_id;
 		var project;
@@ -19,7 +17,15 @@ TodoIndex = Backbone.View.extend({
 				project = data;		
 		  }
 		});
-			this.$el.html(this.template({ project_name: project.name, project_id: project.id }));
+		this.$el.html(this.template({ project_name: project.name, project_id: project.id }));
+		
+		
+		_.each(this.collection, function(todo){
+			view = new TodoShow({ model: todo });
+			$('.todo_wrapper').append(view.render().el)
+		});
+
+		
 		return this;
 	}
 });

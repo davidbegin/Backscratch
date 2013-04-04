@@ -36,6 +36,7 @@ ProjectsView = Backbone.View.extend({
 	render: function(){
 		this.template = JST[this.templateName];
 		this.$el.html(this.template());
+		console.log("COLLECTION 2", this.collection)
     this.collection.each(this.appendProject)
     return this;
 	},
