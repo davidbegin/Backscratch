@@ -1,14 +1,25 @@
-TodosIndex = Backbone.View.extend({
-	templateName: 'todos',
+TodoIndex = Backbone.View.extend({
+	templateName: 'todos_layout',
 	
 	initialize: function(){
-		this.collection.on('all', this.render, this)
+		this.all_projects = new ProjectCollection();
+		this.all_projects.fetch();
+		this.all_projects.on('reset', this.render, this);
+		console.log(this.collection);
 	},
 	
 	render: function(){
+		project_id = this.collection[0].project_id;
+		console.log(project_id);
 		this.template = JST[this.templateName];
-		todos = this.collection.toJSON();
-		this.$el.html(this.template({ todos: todos }));
+		projects_url = '/projects/' + project_id;
+		var project;
+		$.ajax({ url: projects_url, dataType: 'json', async: false,
+		  success: function(data) {
+				project = data;		
+		  }
+		});
+			this.$el.html(this.template({ project_name: project.name, project_id: project.id }));
 		return this;
 	}
 });

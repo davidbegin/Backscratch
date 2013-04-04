@@ -14,7 +14,5 @@ var MainRouter = Backbone.Router.extend({
 		todos.fetch();
 		index_view = new ProjectsView({ collection: projects });
 		$('.section').html(index_view.render().el);
-		todos_view = new TodosIndex({ collection: todos });
-		$('.sidebar').html(todos_view.render().el);
 	}
 });
