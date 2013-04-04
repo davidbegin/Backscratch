@@ -1,31 +1,46 @@
 ProjectView = Backbone.View.extend({
 	templateName: 'project',
 	
-	initialize: function(){
+	initialize: function(options){
 		this.todos = new TodosCollection();
 		this.todos.fetch();
-		this.todos.on('reset', this.render, this);
-		
-		
-		// THIS ISNT BEING NOTIFED OF THE NEW TODOS AND FIRING THE TESTING EVENT
-		this.todos.on('all', this.testin, this);
+		this.todos.on('sync', this.render, this);
+		_.bindAll(this, "addTodo");
+		options.vent.bind("addTodo", this.addTodo);
+		_.bindAll(this, "showTodos");
+		options.vent.bind("showTodos", this.showTodos);
+		vent  = options.vent
+		all_todos = this.todos
 	},
 	
 	
-	// THIS ISNT FIRING WHEN CHANGES HAPPEN ON THE TODO
-	testin: function(){
-		console.log('So the todos have been testin')
+	addTodo: function(){
+		project_id = 29;
+		var project_todos = this.todos.returnProjectTodos(project_id);
+		todo_index = new TodoIndex({ collection: project_todos, vent: vent });
+		$('.sidebar').html(todo_index.render().el);
 	},
 	
 	events: {
 		'click .project_name': 'showTodos'
 	},
-	
-	showTodos: function(){
+
+	showTodos: function(){		
 		project_id = this.model.get('id');
-		var project_todos = this.todos.returnProjectTodos(project_id);
-		todo_index = new TodoIndex({ collection: project_todos });
-		$('.sidebar').html(todo_index.render().el);
+		var project_todos = this.todos.returnProjectTodos(project_id);		
+
+		// if(project_todos.length > 0){
+		// 	todo_index = new TodoIndex({ collection: project_todos, vent: vent, todos: todos, project_id: project_id });
+		// 	$('.sidebar').html(todo_index.render().el);
+		// } else {
+		// 	console.log('There are no todos for this porject')
+		// }
+		
+			todo_index = new TodoIndex({ collection: project_todos, vent: vent, todos: todos, project_id: project_id });
+			$('.sidebar').html(todo_index.render().el);
+		
+		
+
 	},
 	
 	render: function(){

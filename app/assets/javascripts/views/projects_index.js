@@ -2,21 +2,22 @@ ProjectsView = Backbone.View.extend({
 	templateName: 'projects_header',
 	className: '',
 	
-	initialize: function() {
+	initialize: function(options) {
 		this.collection.on('sync', this.render, this);
+		  _.bindAll(this, "newProject");
+		  _.bindAll(this, "createProject");
+		options.vent.bind("newProject", this.newProject);
+		options.vent.bind("createProject", this.createProject);	
+		vent = options.vent
 	},
 	
 	events: {
-		'click .project_name': 'showProjectStats',
 		'click .icon-file': 'newProject',
 		'click .icon-undo': 'render',
 		'click #new_project_button': 'createProject'
 	},
 	
-	showProjectStats: function(){
-		console.log('I was clicked!');
-		console.log(this);
-	},
+
 	
 	newProject: function(){
 		this.template = JST['project_form'];
@@ -36,13 +37,12 @@ ProjectsView = Backbone.View.extend({
 	render: function(){
 		this.template = JST[this.templateName];
 		this.$el.html(this.template());
-		console.log("COLLECTION 2", this.collection)
     this.collection.each(this.appendProject)
     return this;
 	},
 	
 	appendProject: function(project) {
-		view = new ProjectView({ model: project });
+		view = new ProjectView({ model: project, vent: vent });
 		$('.section').append(view.render().el);
 	}
 });

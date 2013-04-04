@@ -1,6 +1,11 @@
 TodoShow = Backbone.View.extend({
+	
 	templateName: 'todos_show',
 	className: 'single_todo',
+	
+	initialize: function(options){
+		vent = options.vent;
+	},
 	
 	render: function(){
 		this.template = JST[this.templateName];
