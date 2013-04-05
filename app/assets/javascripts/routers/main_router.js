@@ -10,7 +10,7 @@ var MainRouter = Backbone.Router.extend({
 		projects.fetch();
 		todos = new TodosCollection();
 		todos.fetch();
-		index_view = new ProjectsView({ collection: projects, vent: vent });
+		index_view = new ProjectsView({ collection: projects });
 		$('.section').html(index_view.render().el);
 	}
 });

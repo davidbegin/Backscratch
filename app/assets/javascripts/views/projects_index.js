@@ -4,7 +4,8 @@ ProjectsView = Backbone.View.extend({
 	
 	initialize: function(options) {
 		this.collection.on('sync', this.render, this);
-		console.log(this.collection)
+		this.collection.on('destroy', this.destroyProjects, this)
+		collection = this.collection
 	},
 	
 	events: {
@@ -17,6 +18,11 @@ ProjectsView = Backbone.View.extend({
 		this.template = JST['project_form'];
 		this.$el.html(this.template);
 		$('.project').css('display', 'none');
+	},
+	
+	destroyProjects: function(){
+		$('.project').remove()
+		this.render();
 	},
 	
 	createProject: function(event){
@@ -36,7 +42,7 @@ ProjectsView = Backbone.View.extend({
 	},
 	
 	appendProject: function(project) {
-		view = new ProjectView({ model: project });
+		view = new ProjectView({ model: project, collection: collection });
 		$('.section').append(view.render().el);
 	}
 });

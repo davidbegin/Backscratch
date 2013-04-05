@@ -1,3 +1,21 @@
 .project {
 	border-bottom: 1px solid #E3E3E3;
+
+	.description {
+		font-style: italic;
+		text-align: center;
+	}
+	
+
+}
+
+.delete {
+	cursor: pointer;
+	text-align: right;
+	font-weight: bold;
+	
+	&:hover {
+		font-size: 1.2em;
+		color: #DE0000;
+	}
 }
