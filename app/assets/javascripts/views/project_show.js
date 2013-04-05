@@ -5,19 +5,15 @@ ProjectView = Backbone.View.extend({
 		this.todos = new TodosCollection();
 		this.todos.fetch();
 		this.todos.on('sync', this.render, this);
-		_.bindAll(this, "addTodo");
-		options.vent.bind("addTodo", this.addTodo);
-		_.bindAll(this, "showTodos");
-		options.vent.bind("showTodos", this.showTodos);
-		vent  = options.vent
 		all_todos = this.todos
+		console.log(this.model)
 	},
-	
-	
+		
 	addTodo: function(){
 		project_id = 29;
-		var project_todos = this.todos.returnProjectTodos(project_id);
-		todo_index = new TodoIndex({ collection: project_todos, vent: vent });
+		var project_todos_array = this.todos.returnProjectTodos(project_id);	
+		var project_todos = new TodosCollection(project_todos_array)	
+		todo_index = new TodoIndex({ collection: project_todos });
 		$('.sidebar').html(todo_index.render().el);
 	},
 	
@@ -27,20 +23,12 @@ ProjectView = Backbone.View.extend({
 
 	showTodos: function(){		
 		project_id = this.model.get('id');
-		var project_todos = this.todos.returnProjectTodos(project_id);		
-
-		// if(project_todos.length > 0){
-		// 	todo_index = new TodoIndex({ collection: project_todos, vent: vent, todos: todos, project_id: project_id });
-		// 	$('.sidebar').html(todo_index.render().el);
-		// } else {
-		// 	console.log('There are no todos for this porject')
-		// }
+		var project_todos_array = this.todos.returnProjectTodos(project_id);		
+		// HERE I NEED TO CREATE A NEW COLLECITON ONLY CONTAIN THOSE VALUE
+		var project_todos = new TodosCollection(project_todos_array)
 		
-			todo_index = new TodoIndex({ collection: project_todos, vent: vent, todos: todos, project_id: project_id });
-			$('.sidebar').html(todo_index.render().el);
-		
-		
-
+		todo_index = new TodoIndex({ collection: project_todos, todos: todos, project_id: project_id });
+		$('.sidebar').html(todo_index.render().el);
 	},
 	
 	render: function(){

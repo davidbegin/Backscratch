@@ -4,11 +4,7 @@ ProjectsView = Backbone.View.extend({
 	
 	initialize: function(options) {
 		this.collection.on('sync', this.render, this);
-		  _.bindAll(this, "newProject");
-		  _.bindAll(this, "createProject");
-		options.vent.bind("newProject", this.newProject);
-		options.vent.bind("createProject", this.createProject);	
-		vent = options.vent
+		console.log(this.collection)
 	},
 	
 	events: {
@@ -16,8 +12,6 @@ ProjectsView = Backbone.View.extend({
 		'click .icon-undo': 'render',
 		'click #new_project_button': 'createProject'
 	},
-	
-
 	
 	newProject: function(){
 		this.template = JST['project_form'];
@@ -42,7 +36,7 @@ ProjectsView = Backbone.View.extend({
 	},
 	
 	appendProject: function(project) {
-		view = new ProjectView({ model: project, vent: vent });
+		view = new ProjectView({ model: project });
 		$('.section').append(view.render().el);
 	}
 });

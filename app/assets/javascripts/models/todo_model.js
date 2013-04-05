@@ -1,0 +1,2 @@
+TodoModel = Backbone.Model.extend({
+});

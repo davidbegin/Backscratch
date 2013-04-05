@@ -4,15 +4,8 @@ var MainRouter = Backbone.Router.extend({
 		'' : 'index'
 	},
 	
-	initialize: function(){
-	},
-	
 	index: function(){
 		var vent = _.extend({}, Backbone.Events);
-		
-
-		
-		
 		projects = new ProjectCollection();
 		projects.fetch();
 		todos = new TodosCollection();
