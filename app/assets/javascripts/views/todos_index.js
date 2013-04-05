@@ -19,6 +19,7 @@ TodoIndex = Backbone.View.extend({
 	
 	revealForm: function(){
 		$('.icon_wrapper').hide();
+		$('.drag_tip').hide()
 		$('#new_todo').show();
 	},
 	
