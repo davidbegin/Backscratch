@@ -24,9 +24,7 @@ ProjectView = Backbone.View.extend({
 	showTodos: function(){		
 		project_id = this.model.get('id');
 		var project_todos_array = this.todos.returnProjectTodos(project_id);		
-		// HERE I NEED TO CREATE A NEW COLLECITON ONLY CONTAIN THOSE VALUE
 		var project_todos = new TodosCollection(project_todos_array)
-		
 		todo_index = new TodoIndex({ collection: project_todos, todos: todos, project_id: project_id });
 		$('.sidebar').html(todo_index.render().el);
 	},
