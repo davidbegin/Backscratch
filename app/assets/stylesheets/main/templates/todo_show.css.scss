@@ -6,3 +6,17 @@
 	color: #53A9B3;
 	cursor: pointer;
 }
+
+#sortable {
+	list-style: none;
+}
+
+.drag_tip {
+	border-radius: 5px;
+	text-align: center;
+	box-shadow: 1px 1px 1px #999;
+	margin: 10px 0px;
+	background: #111;
+	padding: 10px;
+	color: white;
+}
