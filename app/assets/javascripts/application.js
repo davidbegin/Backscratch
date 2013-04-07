@@ -26,6 +26,8 @@
 //= require_tree ./routers
 //= require_tree .
 
+var ENTER_KEY = 13;
+
 $(function() {
     $( "#sortable" ).sortable();
     $( "#sortable" ).disableSelection();

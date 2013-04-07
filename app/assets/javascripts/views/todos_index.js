@@ -6,7 +6,8 @@ TodoIndex = Backbone.View.extend({
 		this.all_projects.fetch();
 		this.all_projects.on('reset', this.render, this);					
 		this.collection.on('add', this.render, this);
-		this.collection.on('destroy', this.render, this)
+		this.collection.on('destroy', this.render, this);
+		this.collection.on('all', this.render, this);
 		todos = options.todos
 		collection = this.collection
 		project_id = options.project_id

@@ -16,7 +16,36 @@
 	text-align: center;
 	box-shadow: 1px 1px 1px #999;
 	margin: 10px 0px;
-	background: #111;
+	background: #4BC0DA;
 	padding: 10px;
 	color: white;
+}
+
+#edit_todo {
+	margin: 0 auto;
+	width: 90%;
+	height: 50px;
+	font-size: 1em;
+}
+
+.todos{
+	background: #F1F1F1;
+	margin: 1em 0em;
+	text-align: center;
+	padding: 1em 0;	
+}
+
+.icon-plus {
+	cursor: pointer;
+	font-size: 1.2em;
+}
+
+.icon_wrapper {
+	margin-right: 1em;
+	font-size: 1.4em;
+	text-align: right;
+}
+
+#new_todo {
+	display: none;
 }
